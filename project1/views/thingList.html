@@ -1,0 +1,35 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+ 
+    <!-- <h1>Movies!!!</h1>
+    <h2>Pick one here please</h2>
+    <h3> <%- list[0].CustomerID %></h3>
+    <h3> <%- list[0].CompanyName %></h3>
+    <h3> <%- list[1].CustomerID %></h3>
+    <h3> <%- list[1].CompanyName %></h3>
+    <h3> <%- list[2].CustomerID %></h3>
+    <h3> <%- list[2].CompanyName %></h3> -->
+
+    <h1>Things</h1>
+    <h3> <%- list[0].ProductName %></h3>
+    <div id="d1">
+
+    </div>
+
+
+    <script>
+        var fullList = <%-list%>;
+        var div = document.getElementById("d1");
+        var len = fullList.length;
+        for(var i=0; i<len;i++){
+            div.innerHTML += fullList[i].ProductName + "-" + fullList[i].UnitPrice + "<br>";
+        }
+    </script>
+</body>
+
+</html>

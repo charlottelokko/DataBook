@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <title>HewoWorld</title>
+</head>
+
+<body>
+    <div id="mainarea">
+        <div id="centrediv">
+            <div id="output" style="border:1px solid powderblue">
+                <p id="p1">Results</p>
+                <div id="d"></div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+
+<script>
+    $.get("http://127.0.0.1:8081/customers", function (data, status, jqxhr) {
+        var list = "";
+        for (let {
+                CustomerID,
+                CompanyName,
+                City,
+                Country
+            } of data) {
+            list += "<div class='fl nice' style='height:40%'>" + CustomerID + " <br> " + CompanyName + " <br> " + City + "<br>" + Country +  "</div>";
+        }
+        document.getElementById("output").innerHTML = list;
+    });
+</script>

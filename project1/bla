@@ -1,0 +1,4 @@
+   <!-- <h1>Movies!!!</h1>
+    <h2>Pick one here please</h2>
+    <h3> <%= fullList[0].name %> </h3>
+    <h3> <%= fullList[1].name %></h3> -->
