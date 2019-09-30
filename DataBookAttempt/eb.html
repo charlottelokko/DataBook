@@ -1,0 +1,194 @@
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #EEEEEE;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        div {
+            margin: 10px;
+            padding: 10px;
+            width: 150px;
+        }
+
+        .nice {
+            border: 1px solid #0000FF;
+            width: 10%;
+        }
+
+        .cb {
+            clear: both;
+            width: 0;
+            height: 0;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        select {
+            width: 130%;
+            border: yellow;
+        }
+
+        td {
+            width: 150px;
+            border: 1px solid black
+        }
+
+        #header {
+            background-color: #385898;
+            padding: 15px;
+            padding-top: 30px;
+            width: 100%;
+            margin: 0;
+            font-size: 30px;
+            color: white;
+            font-family: Helvetica, Arial, sans-serif;
+            font-weight: 700;
+        }
+
+        #sidebar {
+            background-color: #000077;
+            width: 15%;
+            min-height: 500px;
+            float: left;
+        }
+
+        #mainarea {
+            width: 80%;
+            min-height: 500px;
+            float: left;
+
+        }
+
+        #footer {
+            width: 100%;
+            clear: both;
+            background-color: #fff;
+            min-height: 100px;
+        }
+
+        #centrediv {
+            width: 80%;
+            margin: 5px auto;
+            border: 1px solid blue;
+        }
+
+        #output {
+            width: 90%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">facebook</div>
+    <div id="mainarea">
+        <div class="cb"></div>
+        <input value="Generate Chart" type="button" id="button4">
+        <canvas id="myChart" style="float:right;"></canvas>
+
+
+
+
+    </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script>
+        //for weather url
+        $.get("https://prodapi.metweb.ie/observations/phoenix-park/today"
+
+            //for stock url
+            // $.get("http://feed2.conygre.com/API/StockFeed/GetStockPricesForSymbol/acn?HowManyValues=50"
+            ,
+            function (data, status, jqxhr) {
+                var fullList = "";
+                var title = "";
+                //var theJsonObject = JSON.parse(data)
+                /*fullList += `<table style="width: 100%;">
+                              <tr> <th> Time</th> <th> Date</th> <th> Temperature </th>`;*/
+                var dataSet = [];
+                var dataAct = [];
+                var i = 0;
+                //for weather
+                for (let {
+                        reportTime,
+                        date,
+                        temperature
+                    } of data) {
+
+
+                    fullList += `<tr>`;
+                    fullList += `<td> ${reportTime} </td> <td> ${date} </td> <td> ${temperature} </td> `;
+                    fullList += `</tr>`;
+                    title = date;
+                    dataSet[i] = reportTime;
+                    dataAct[i] = temperature;
+                    i++;
+
+                }
+
+                //for stock
+                /*for(let {tradeTime,Price,CompanyName} of data)
+                 {
+                  // fullList += SymbolID + " - " + Symbol + " - " + CompanyName + "<br/>";
+
+                /* title = CompanyName;
+                 dataSet[i] = tradeTime ;
+                 dataAct[i] = Price;
+                 i++;
+                
+                }*/
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var chart = new Chart(ctx, {
+                    // The type of chart we want to create
+                    type: 'line',
+
+                    // The data for our dataset
+                    data: {
+                        labels: dataSet,
+                        datasets: [{
+                            label: title,
+                            //backgroundColor: 'rgb(0, 0, 255)',
+                            borderColor: 'rgb(0, 0, 255)',
+                            pointBackgroundColor: 'black',
+                            data: dataAct
+
+                        }]
+                    },
+
+                    // Configuration options go here
+                    options: {
+                        scales: {
+                            xAxes: [{
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Time'
+                                }
+
+                            }],
+                            yAxes: [{
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Value'
+                                }
+
+                            }]
+                        }
+
+                    }
+                });
+                //fullList += `</table>`;
+                //$("#output2").append(fullList);
+            });
+    </script>
+</body>
+
+</html>
