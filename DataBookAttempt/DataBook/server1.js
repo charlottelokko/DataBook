@@ -4,6 +4,7 @@ var app = express();
 
 app.engine('html', require('ejs').renderFile);  //allows html pages and injection of data into them 
 
+app.use(express.static(__dirname + '/css'));
 
 app.get("/",function(req,res){
     res.render(__dirname + "/index.html");
