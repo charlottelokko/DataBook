@@ -20,7 +20,7 @@ $.get("https://prodapi.metweb.ie/observations/phoenix-park/today",
 
         }
 
-        var ctx = document.getElementById('myAreaChart');
+        var ctx = document.getElementById('myAreaChart').getContext('2d');
         var chart = new Chart(ctx, {
             // The type of chart we want to create
             type: 'line',
@@ -129,7 +129,7 @@ $.get("https://prodapi.metweb.ie/observations/phoenix-park/yesterday",
 
         }
 
-        var ctx = document.getElementById('YesterdayTempChart');
+        var ctx = document.getElementById('YesterdayTempChart').getContext('2d');
         var chart = new Chart(ctx, {
             // The type of chart we want to create
             type: 'line',
@@ -247,11 +247,11 @@ $.get("https://prodapi.metweb.ie/monthly-data/Phoenix%20Park",
         var dataAct = [jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec];
         console.log(dataAct);
 
-        var ctx = document.getElementById("myBarChart");
+        var ctx = document.getElementById("myBarChart").getContext('2d');
         var myBarChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ["January", "February", "March", "April", "May", "June", "July","August","September","November","December"],
+                labels: ["January", "February", "March", "April", "May", "June", "July","August","September","October","November","December"],
                 datasets: [{
                     // label: "Revenue",
                     backgroundColor: "#4e73df",
