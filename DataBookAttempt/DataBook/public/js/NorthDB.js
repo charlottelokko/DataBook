@@ -1,5 +1,5 @@
 $.get("http://127.0.0.1:8081/products",function(data, status, jqxhr){
-    var dataList = `<div class="table-responsive">
+    var dataList = `
     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
       <thead>
         <tr>
@@ -9,14 +9,7 @@ $.get("http://127.0.0.1:8081/products",function(data, status, jqxhr){
           <th>Unit Price</th>
         </tr>
       </thead>
-      <tfoot>
-        <tr>
-          <th>Product ID</th>
-          <th>Product Name</th>
-          <th>Units in Stock</th>
-          <th>Unit Price</th>
-        </tr>
-      </tfoot>
+      
       <tbody>`;
     
  
@@ -25,7 +18,17 @@ $.get("http://127.0.0.1:8081/products",function(data, status, jqxhr){
         dataList += `<td>${ProductID}</td><td>${ProductName}</td><td>${UnitsInStock}</td><td>${UnitPrice}</td>`;
         dataList += `</tr>`
     }
-    dataList += "</tbody></table></div>";
+    dataList += `</tbody></table>`;
     $('#table').append(dataList);
-})
+    $('#dataTable').dataTable();
+});
+
+const tab = document.getElementById("#tab");
+// function clicks() {
+//     if(tab.click()){
+
+//     }
+//   }
+
+
 

@@ -56,21 +56,21 @@ app.get('/js/NorthDB.js',
     }); 
 
 
-// DB Shite
+// DB Stuff
 
 //Connection String parameters
 sql.connect(sqlConfig, function (req, res) {
       
-    app.get("/customers", (req, res) => {
-        var request = new sql.Request();
-        request.query("select top 2 * from Customers", function (err, results) {
-            res.json(results.recordset);
-        });
-    });
+    // app.get("/customers", (req, res) => {
+    //     var request = new sql.Request();
+    //     request.query("select top 2 * from Customers", function (err, results) {
+    //         res.json(results.recordset);
+    //     });
+    // });
 
     app.get("/products", (req, res) => {
         var request = new sql.Request();
-        request.query("select top 20 * from Products", function (err, results) {
+        request.query("select * from Products", function (err, results) {
             res.json(results.recordset);
         });
     });
@@ -92,4 +92,10 @@ sql.connect(sqlConfig, function (req, res) {
             res.render(__dirname + "/views/thingList.html", {list: sData});
         });
     });
+
+//     app.get("/clicks", function(req,res){
+//         request.execute("usp_TotalClicks", function(err, results){
+//             res
+//         });
+//     )};
 });
