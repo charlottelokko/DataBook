@@ -37,7 +37,7 @@
         "datatables.net-bs4": "1.10.19",
         "ejs": "^2.7.1",
         "jquery": "3.4.1",
-        "jquery.easing": "^1.4.1"
+        "jquery.easing": "^1.4.1",
     },
     "devDependencies": {
         "browser-sync": "2.26.7",
@@ -53,3 +53,5 @@
         "merge-stream": "2.0.0"
     }
 }
+
+

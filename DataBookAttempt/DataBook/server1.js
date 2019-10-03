@@ -36,7 +36,7 @@ app.get("/charts.html",function(req,res){
     res.sendFile(__dirname + "/views/charts.html");
 });
 
-app.get("/tables.html",function(req,res){
+app.get("/tables.html",function(req,res){ 
     res.sendFile(__dirname + "/views/tables.html");
 });
 
@@ -75,27 +75,15 @@ sql.connect(sqlConfig, function (req, res) {
         });
     });
 
-    //MVC example
-    app.get("/things/:minprice?/:maxprice?", function (req, res) {        //Controller, with a parameter
-        var sqlMinPrice = (req.params.minprice || 0);
-        var sqlMaxPrice = (req.params.maxprice || 999);
+    app.post('/clicky', function(req,res){
+        var request = new sql.Request();
+        request.execute("usp_TotalClicks", function(err,results){});
+    })
 
-         //...invoking the MODEL
-        var request = new sql.Request(); 
-        // request.query("select * from Products where unitprice <" + sqlMinPrice, function (err, results) {
-        request.input("min", sqlMinPrice)
-        request.input("max", sqlMaxPrice)
-        request.execute("usp_ProductsBetweenOrdered", function (err, results) {
-
-            var sData = JSON.stringify(results.recordsets[0]);
-            //returning a VIEW
-            res.render(__dirname + "/views/thingList.html", {list: sData});
+    app.get("/clicky2", (req, res) => {
+        var request = new sql.Request();
+        request.query("select * from Clicks", function (err, results) {
+            res.json(results.recordset);
         });
     });
-
-//     app.get("/clicks", function(req,res){
-//         request.execute("usp_TotalClicks", function(err, results){
-//             res
-//         });
-//     )};
 });

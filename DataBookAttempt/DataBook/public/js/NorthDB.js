@@ -23,12 +23,18 @@ $.get("http://127.0.0.1:8081/products",function(data, status, jqxhr){
     $('#dataTable').dataTable();
 });
 
-const tab = document.getElementById("#tab");
+// const tab = document.getElementById("#tab");
 // function clicks() {
-//     if(tab.click()){
 
-//     }
+//   if(tab.click()){
+
 //   }
+// }
+
+$("#tab").click(function(){
+  var postAPI = "/clicky";
+  $.post(postAPI);
+})
 
 
 
