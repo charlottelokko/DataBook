@@ -26,6 +26,7 @@ $.get("http://127.0.0.1:8081/clicky2", function (data, status, jqxhr) {
   <span class="mr-2">
     <i class="fas fa-circle text-success"></i>${dataSet[1].substring(0,10)}: ${dataAct[1]} Hits
   </span>
+  <br>
   <span class="mr-2">
     <i class="fas fa-circle text-info"></i>${dataSet[2].substring(0,10)}: ${dataAct[2]} Hits
   </span>
