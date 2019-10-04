@@ -102,7 +102,39 @@
         <div class="container-fluid">
 
           <!-- DataTales Example -->
-          <div class="card shadow mb-4">
+      <div id="accordianId" role="tablist" aria-multiselectable="true">
+        <div class="card">
+          <div class="card-header" role="tab" id="section1HeaderId">
+            <h5 class="mb-0">
+              <a data-toggle="collapse" data-parent="#accordianId" href="#section1ContentId" aria-active="true" aria-expanded="true" aria-controls="section1ContentId">
+                <!-- <h6 class="m-0 font-weight-bold text-primary">Northwind products</h6> -->
+                Products
+              </a>
+            </h5>
+          </div>
+          <div id="section1ContentId" class="collapse in" role="tabpanel" aria-labelledby="section1HeaderId">
+            <div class="card-body">
+            <div class="table-responsive"  id="table">
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" role="tab" id="section2HeaderId">
+            <h5 class="mb-0">
+              <a data-toggle="collapse" data-parent="#accordianId" href="#section2ContentId" aria-expanded="true" aria-controls="section2ContentId">
+                 Customers
+              </a>
+            </h5>
+          </div>
+          <div id="section2ContentId" class="collapse in" role="tabpanel" aria-labelledby="section2HeaderId">
+            <div class="card-body">
+                <div class="table-responsive"  id="table2">
+            </div>
+          </div>
+        </div>
+      </div>
+
+          <!-- <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Northwind products</h6>
             </div>
@@ -110,7 +142,7 @@
               <div class="table-responsive"  id="table">
               </div>
             </div>
-          </div>
+          </div> -->
 
         </div>
         <!-- /.container-fluid -->

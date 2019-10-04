@@ -61,12 +61,12 @@ app.get('/js/NorthDB.js',
 //Connection String parameters
 sql.connect(sqlConfig, function (req, res) {
       
-    // app.get("/customers", (req, res) => {
-    //     var request = new sql.Request();
-    //     request.query("select top 2 * from Customers", function (err, results) {
-    //         res.json(results.recordset);
-    //     });
-    // });
+    app.get("/customers", (req, res) => {
+        var request = new sql.Request();
+        request.query("select * from Customers", function (err, results) {
+            res.json(results.recordset);
+        });
+    });
 
     app.get("/products", (req, res) => {
         var request = new sql.Request();
